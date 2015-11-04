@@ -1,2 +1,3 @@
 # ChoixResto2
-C# exercise
+
+Exercise made for my ASP.NET MVC training.
