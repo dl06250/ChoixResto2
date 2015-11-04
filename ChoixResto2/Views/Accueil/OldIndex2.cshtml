@@ -1,0 +1,27 @@
+﻿@model ChoixResto2.ViewModels.AccueilViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>Je suis la vue index</div>
+    @using (Html.BeginForm("Index","Home"))
+    {
+        @Html.Label("estMajeur", "Cochez la case si vous êtes majeur")
+        @Html.CheckBox("estMajeur",true)
+        <br />
+        @Html.LabelFor(model => model.Resto.Nom)
+        @Html.TextBoxFor(model => model.Resto.Nom)
+        <br />
+        <input type="submit" value="Envoyer" />
+    }
+</body>
+</html>
