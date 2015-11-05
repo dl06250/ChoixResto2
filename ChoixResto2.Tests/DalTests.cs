@@ -34,27 +34,27 @@ namespace ChoixResto2.Tests
         public void
         CreerRestaurant_AvecUnNouveauRestaurant_ObtientTousLesRestaurantsRenvoitBienLeRestaurant()
         {
-            dal.CreerRestaurant("La bonne fourchette", "01 02 03 04 05");
+            dal.CreerRestaurant("La bonne fourchette", "0102030405");
             List<Resto> restos = dal.ObtientTousLesRestaurants();
 
             Assert.IsNotNull(restos);
             Assert.AreEqual(1, restos.Count);
             Assert.AreEqual("La bonne fourchette", restos[0].Nom);
-            Assert.AreEqual("01 02 03 04 05", restos[0].Telephone);
+            Assert.AreEqual("0102030405", restos[0].Telephone);
         }
 
         [TestMethod]
         public void
         ModifierRestaurant_CreationDUnNouveauRestaurantEtChangementNomEtTelephone_LaModificationEstCorrectAprèsRechargement()
         {
-            dal.CreerRestaurant("La bonne fourchette", "01 02 03 04 05");
-            dal.ModifierRestaurant(1, "La bonne cuillère", null);
+            dal.CreerRestaurant("La bonne fourchette", "0102030405");
+            dal.ModifierRestaurant(1, "La bonne cuillère", "0102030407");
 
             List<Resto> restos = dal.ObtientTousLesRestaurants();
             Assert.IsNotNull(restos);
             Assert.AreEqual(1, restos.Count);
             Assert.AreEqual("La bonne cuillère", restos[0].Nom);
-            Assert.IsNull(restos[0].Telephone);
+            Assert.IsNotNull(restos[0].Telephone);
         }
 
         [TestMethod]
