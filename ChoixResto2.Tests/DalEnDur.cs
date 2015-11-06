@@ -79,12 +79,21 @@ namespace ChoixResto2.Tests
 
         public int CreerUnSondage()
         {
-            throw new NotImplementedException();
+            int id = listeDesSondages.Count == 0 ? 1 : listeDesSondages.Max(s => s.Id) + 1;
+            listeDesSondages.Add(new Sondage { Id = id, Date = DateTime.Now, Votes=new List<Vote>() });
+            return id;
         }
 
         public void AjouterVote(int idSondage, int idResto, int idUtilisateur)
         {
-            throw new NotImplementedException();
+            Vote vote = new Vote
+            {
+                Resto = listeDesRestaurants.First(r => r.Id==idResto),
+                Utilisateur = listeDesUtilisateurs.First(u => u.Id==idUtilisateur)
+            };
+
+            //Sondage sondage = listeDesSondages.F
+                
         }
 
         public List<Resultats> ObtenirLesResultats(int idSondage)

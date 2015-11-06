@@ -114,9 +114,6 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ChoixResto2\ChoixResto2.csproj">
       <Project>{29936550-B949-4E03-B396-6CB116426DA4}</Project>
       <Name>ChoixResto2</Name>
