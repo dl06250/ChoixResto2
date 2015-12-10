@@ -1,11 +1,10 @@
-﻿using ChoixResto2.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChoixResto2.Tests
+namespace ChoixResto2.Models
 {
     public class DalEnDur : IDal
     {
@@ -93,14 +92,10 @@ namespace ChoixResto2.Tests
             };
 
             Sondage sondage = listeDesSondages.First(s => s.Id == idSondage);
-<<<<<<< HEAD
             sondage.Votes.Add(vote);
-=======
-            sondage.Votes.Add(vote);               
->>>>>>> 6df8d902166ed11862419b72df70def1d4b06837
         }
 
-        public List<Resultats> ObtenirLesResultats(int idSondage)
+/*        public List<Resultats> ObtenirLesResultats(int idSondage)
         {
             List<Resto> restaurants = ObtientTousLesRestaurants();
             List<Resultats> resultats = new List<Resultats>();
@@ -114,6 +109,7 @@ namespace ChoixResto2.Tests
             }
             return resultats;
         }
+ */
 
         public bool ADejaVote(int idSondage, string idStr)
         {

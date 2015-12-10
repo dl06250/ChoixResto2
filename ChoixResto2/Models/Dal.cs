@@ -122,7 +122,7 @@ namespace ChoixResto2.Models
             bdd.SaveChanges();
         }
 
-        public List<Resultats> ObtenirLesResultats(int idSondage)
+/*        public List<Resultats> ObtenirLesResultats(int idSondage)
         {
             List<Resto> restaurants = ObtientTousLesRestaurants();
             List<Resultats> resultats = new List<Resultats>();
@@ -136,5 +136,6 @@ namespace ChoixResto2.Models
             }
             return resultats;
         }
+ */
     }
 }
