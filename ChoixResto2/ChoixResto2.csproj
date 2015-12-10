@@ -123,10 +123,9 @@
     </Compile>
     <Compile Include="Models\BddContext.cs" />
     <Compile Include="Models\Dal.cs" />
+    <Compile Include="Models\DalEnDur.cs" />
     <Compile Include="Models\IDal.cs" />
-    <Compile Include="Models\InitChoixResto.cs" />
     <Compile Include="Models\Resto.cs" />
-    <Compile Include="Models\Resultats.cs" />
     <Compile Include="Models\Sondage.cs" />
     <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Models\Vote.cs" />
@@ -152,19 +151,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Accueil\OldIndex.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Accueil\OldIndex2.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Accueil\Connexion.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Accueil\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Accueil\AfficheListeRestaurant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Restaurant\Index.cshtml" />
