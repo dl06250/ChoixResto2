@@ -35,7 +35,7 @@ namespace ChoixResto2.Controllers
             }
             else
             {
-                return View("Error");
+                return HttpNotFound();
             }
         }
 

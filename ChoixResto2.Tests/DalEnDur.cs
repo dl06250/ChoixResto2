@@ -92,8 +92,8 @@ namespace ChoixResto2.Tests
                 Utilisateur = listeDesUtilisateurs.First(u => u.Id==idUtilisateur)
             };
 
-            //Sondage sondage = listeDesSondages.F
-                
+            Sondage sondage = listeDesSondages.First(s => s.Id == idSondage);
+            sondage.Votes.Add(vote);
         }
 
         public List<Resultats> ObtenirLesResultats(int idSondage)
