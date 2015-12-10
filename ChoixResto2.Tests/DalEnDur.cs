@@ -93,22 +93,46 @@ namespace ChoixResto2.Tests
             };
 
             Sondage sondage = listeDesSondages.First(s => s.Id == idSondage);
+<<<<<<< HEAD
             sondage.Votes.Add(vote);
+=======
+            sondage.Votes.Add(vote);               
+>>>>>>> 6df8d902166ed11862419b72df70def1d4b06837
         }
 
         public List<Resultats> ObtenirLesResultats(int idSondage)
         {
-            throw new NotImplementedException();
+            List<Resto> restaurants = ObtientTousLesRestaurants();
+            List<Resultats> resultats = new List<Resultats>();
+            Sondage sondage = listeDesSondages.First(s => s.Id == idSondage);
+            foreach (IGrouping<int, Vote> grouping in sondage.Votes.GroupBy(v => v.Resto.Id))
+            {
+                int idRestaurant = grouping.Key;
+                Resto resto = restaurants.First(r => r.Id == idRestaurant);
+                int nombreDeVotes = grouping.Count();
+                resultats.Add(new Resultats { Nom = resto.Nom, Telephone = resto.Telephone, NombreDeVotes = nombreDeVotes });
+            }
+            return resultats;
         }
 
         public bool ADejaVote(int idSondage, string idStr)
         {
-            throw new NotImplementedException();
+            int id;
+            if (int.TryParse(idStr, out id))
+            {
+                Sondage sondage = listeDesSondages.First(s => s.Id == idSondage);
+                if (sondage.Votes == null)
+                    return false;
+                return sondage.Votes.Any(v => v.Utilisateur != null && v.Utilisateur.Id == id);
+            }
+            return false;
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            listeDesRestaurants = new List<Resto>();
+            listeDesSondages = new List<Sondage>();
+            listeDesUtilisateurs = new List<Utilisateur>();
         }
     }
 }
