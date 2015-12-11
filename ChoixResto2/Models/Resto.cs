@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace ChoixResto2.Models
 {
     [Table("Restos")]
-    public class Resto : IValidatableObject
+    public class Resto
     {
         public int Id { get; set; }
         [Required(ErrorMessage="Le nom du restaurant doit être saisi")]

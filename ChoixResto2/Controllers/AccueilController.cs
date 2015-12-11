@@ -35,7 +35,7 @@ namespace ChoixResto2.Controllers
             //return View(vm);
             return View();
         }
-
+/*
         [ChildActionOnly]
         public ActionResult AfficheListeRestaurant()
         {
@@ -48,6 +48,6 @@ namespace ChoixResto2.Controllers
             };
             return PartialView(listeDesRestos);
         }
-
+*/
     }
 }

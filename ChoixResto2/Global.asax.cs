@@ -21,10 +21,11 @@ namespace ChoixResto2
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
+            /*
             IDatabaseInitializer<BddContext> init = new InitChoixResto();
             Database.SetInitializer(init);
             init.InitializeDatabase(new BddContext());
+             */
         }
     }
 }

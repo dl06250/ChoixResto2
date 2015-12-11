@@ -169,7 +169,7 @@ namespace ChoixResto2.Tests
 
             Assert.IsTrue(aVote);
         }
-
+/*
         [TestMethod]
         public void ObtenirLesResultats_AvecQuelquesChoix_RetourneBienLesResultats()
         {
@@ -251,5 +251,6 @@ namespace ChoixResto2.Tests
             Assert.AreEqual("Resto pinière", resultats2[2].Nom);
             Assert.AreEqual("0102030405", resultats2[2].Telephone);
         }
+ */
     }
 }
