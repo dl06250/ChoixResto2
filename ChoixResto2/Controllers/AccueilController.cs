@@ -14,6 +14,7 @@ namespace ChoixResto2.Controllers
 
         public ActionResult Index()
         {
+            return View();
             //AccueilViewModel vm = new AccueilViewModel
             //{
             //    Message = "Bonjour depuis le contrôleur",
@@ -33,7 +34,6 @@ namespace ChoixResto2.Controllers
             //ViewBag.ListeDesRestos = new SelectList(listeDesRestos, "Id", "Nom");
 
             //return View(vm);
-            return View();
         }
 /*
         [ChildActionOnly]
