@@ -54,12 +54,42 @@ namespace ChoixResto2.Models
             return bdd.Utilisateurs.FirstOrDefault(user => user.Id == id);
         }
 
+/* En attendant d'implémenter le système d'authentification
+
         public Utilisateur ObtenirUtilisateur(string idStr)
         {
             int id;
             if (int.TryParse(idStr, out id))
                 return ObtenirUtilisateur(id);
             return null;
+        }
+*/
+        /*En attendant d'implémenter le système d'authentification*/
+        public Utilisateur ObtenirUtilisateur(string idStr)
+        {
+            switch (idStr)
+            {
+                case "Chrome":
+                    return CreeOuRecupere("David", "1234");
+                case "IE":
+                    return CreeOuRecupere("Evan", "1234");
+                case "Firefox":
+                    return CreeOuRecupere("Lucas", "1234");
+                default:
+                    return CreeOuRecupere("Magali", "1234");
+            }                       
+        }
+
+        /*En attendant d'implémenter le système d'authentification*/
+        private Utilisateur CreeOuRecupere(string nom, string motDePasse)
+        {
+            Utilisateur utilisateur = Authentifier(nom, motDePasse);
+            if (utilisateur == null)
+            {
+                int id = AjouterUtilisateur(nom, motDePasse);
+                return ObtenirUtilisateur(id);
+            }
+            return utilisateur;
         }
 
         public int AjouterUtilisateur(string prenom, string motdepasse)
@@ -83,6 +113,7 @@ namespace ChoixResto2.Models
             return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
         }
 
+/* En attendant d'implémenter le système d'authentification
         public bool ADejaVote(int idSondage, string idStr)
         {
             int id;
@@ -96,8 +127,22 @@ namespace ChoixResto2.Models
             }
             return false;
         }
+*/
 
+        /*En attendant d'implémenter le système d'authentification*/
+        public bool ADejaVote(int idSondage, string idStr)
+        {
+            Utilisateur utilisateur = ObtenirUtilisateur(idStr);
+            if (utilisateur !=null)
+            {
+                Sondage sondage = bdd.Sondages.First(s => s.Id == idSondage);
+                if (sondage.Votes == null)
+                    return false;
 
+                return sondage.Votes.Any(v => v.Utilisateur != null && v.Utilisateur.Id == utilisateur.Id);
+            }
+            return false;
+        }
 
         public int CreerUnSondage()
         {

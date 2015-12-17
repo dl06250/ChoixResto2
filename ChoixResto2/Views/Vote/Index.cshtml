@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ChoixResto2.ViewModels.RestaurantVoteViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>Cochez les restaurants où vous voulez bien aller. Attention le vote est définitif !</p>
+    @using(Html.BeginForm())
+    {
+        <table>    
+            @foreach (var resto in Model) {
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <input type="submit" value="Valider le choix" />
+    }
+</body>
+</html>
