@@ -113,5 +113,11 @@ namespace ChoixResto2.Models
         {
             throw new NotImplementedException();
         }
+
+
+        public List<Resultats> ObtenirLesResultats(int idSondage)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

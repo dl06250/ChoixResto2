@@ -49,10 +49,21 @@ namespace ChoixResto2.Controllers
             if (utilisateur == null)
                 return new HttpUnauthorizedResult();
 
-            //foreach (RestaurantCheckBoxViewModel restaurantCheckBoxViewModel in viewModel.ListeDesRestos.Where
-
-
+            foreach (RestaurantCheckBoxViewModel restaurantCheckBoxViewModel in
+                viewModel.ListeDesRestos.Where(r => r.EstSelectionne))
+            { 
+                dal.AjouterVote(id, restaurantCheckBoxViewModel.Id, utilisateur.Id); 
+            }          
             return RedirectToAction("AfficheResultat", new { id = id });
+        }
+
+        public ActionResult AfficheResultat(int id)
+        {
+            if (!dal.ADejaVote(id, Request.Browser.Browser))
+                return RedirectToAction("Index", new { id = id });
+
+            List<Resultats> resultats = dal.ObtenirLesResultats(id);
+            return View(resultats.OrderByDescending(r => r.NombreDeVotes).ToList());
         }
 
     }

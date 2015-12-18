@@ -19,5 +19,6 @@ namespace ChoixResto2.Models
         int CreerUnSondage();
         void AjouterVote(int idSondage, int idResto, int idUtilisateur);
         bool ADejaVote(int idSondage, string idStr);
+        List<Resultats> ObtenirLesResultats(int idSondage);
     }
 }
