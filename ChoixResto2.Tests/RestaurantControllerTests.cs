@@ -26,5 +26,19 @@ namespace ChoixResto2.Tests
                 Assert.AreEqual("Resto pinambour", modele[0].Nom);
             }
         }
+
+        [TestMethod]
+        public void RestaurantController_ModifierRestaurantAvecRestoInvalide_RenvoiVueParDefaut()
+        {
+            using (IDal dal = new DalEnDur())
+            {
+                RestaurantController controller = new RestaurantController(dal);
+                controller.ModelState.AddModelError("Nom", "Le nom du restaurant doit être saisi");
+                ViewResult resultat = (ViewResult)controller.ModifierRestaurant(new Resto { Id = 1, Nom = null, Telephone = "0102030405" });
+
+                Assert.AreEqual(string.Empty, resultat.ViewName);
+                Assert.IsFalse(resultat.ViewData.ModelState.IsValid);
+            }
+        }
     }
 }

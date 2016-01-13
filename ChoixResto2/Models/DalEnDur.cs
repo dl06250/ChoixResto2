@@ -95,29 +95,37 @@ namespace ChoixResto2.Models
             sondage.Votes.Add(vote);
         }
 
-/*        public List<Resultats> ObtenirLesResultats(int idSondage)
+        public List<Resultats> ObtenirLesResultats(int idSondage)
         {
             List<Resto> restaurants = ObtientTousLesRestaurants();
             List<Resultats> resultats = new List<Resultats>();
             Sondage sondage = listeDesSondages.First(s => s.Id == idSondage);
-            throw new NotImplementedException();
+            foreach (IGrouping<int, Vote> grouping in sondage.Votes.GroupBy(v => v.Resto.Id))
+            {
+                int idRestaurant = grouping.Key;
+                Resto resto = restaurants.First(r => r.Id == idRestaurant);
+                int nombreDeVotes = grouping.Count();
+                resultats.Add(new Resultats { Nom = resto.Nom, NombreDeVotes = nombreDeVotes, Telephone = resto.Telephone });
+            }
+            return resultats;
         }
- */
+
 
         public bool ADejaVote(int idSondage, string idStr)
         {
-            throw new NotImplementedException();
+            Utilisateur utilisateur = ObtenirUtilisateur(idStr);
+            if (utilisateur == null)
+                return false;
+
+            Sondage sondage = listeDesSondages.First(s => s.Id == idSondage);
+            return sondage.Votes.Any(v => v.Utilisateur.Id == utilisateur.Id);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-
-        public List<Resultats> ObtenirLesResultats(int idSondage)
-        {
-            throw new NotImplementedException();
+            listeDesRestaurants = new List<Resto>();
+            listeDesSondages = new List<Sondage>();
+            listeDesUtilisateurs = new List<Utilisateur>();
         }
     }
 }
